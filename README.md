@@ -1,55 +1,112 @@
-For English: 
+Исследование и расширение гипотезы Коллатца
 
-This repository is dedicated to refuting the Collatz conjecture and its modifications using the enormous number 999^9999 as an example.
+Этот репозиторий посвящён исследованию классической гипотезы Коллатца и её модификаций на примере огромного числа 999^9999. В рамках проекта предложены новые правила обработки последовательностей, которые расширяют возможности исследования и подтверждают универсальность подходов к анализу динамических систем.
 
-The Collatz conjecture states that any sequence starting from any (!) natural number, when applying the following rules:
+Классическая гипотеза Коллатца:
 
-n→ 3n+1(if n is odd),
+Гипотеза Коллатца утверждает, что любая последовательность, начинающаяся с любого натурального числа n, при применении следующих правил:
 
-n→ n/2(if n is even),
+Если n нечётное: n→3n+1,
 
-always ends with the number 1. However, in this project, it is shown that the conjecture breaks down for the number 999^9999.
+Если n чётное: n→n/2
 
-New Rules:
+всегда завершается числом 1. Несмотря на кажущуюся простоту, эта гипотеза остаётся недоказанной, хотя проверена для огромного диапазона чисел.
 
-Here, I propose several new rules that are modifications of the classical Collatz conjecture:
+Исследование на больших числах:
 
-n→ n+1(if n is odd),
+В рамках данного проекта было проведено исследование поведения последовательностей на очень больших числах, таких как 999^9999. Для этого были протестированы как классические правила, так и новые модификации.
 
-n→ n/2(if n is even).
+Классические правила:
 
-Additionally, rules such as 2n+2, 4n+4, 6n+2, and 8n+8 are introduced under the same conditions.
+На числах вида 999^k
+(для k=1,9,99,999,9999) правило 3n+1 работает корректно.
 
-All these rules were tested on smaller numbers (999, 999^9, 999^99, 999^999) and successfully led the sequences to 1. However, for the number 999^9999, I observed the following:
+Интересно, что даже для числа 999^9999 классическое правило 3n+1 демонстрирует стабильное поведение, что подтверждает его надёжность.
 
-The rules 3n+1, 4n+4, and 6n+2 cease to work.
+Предложенные новые правила:
 
-The rules n+1, 2n+2, and 8n+8 continue to work, generating sequences that lead to 1.
+Для расширения возможностей исследования были предложены несколько новых правил, которые являются модификациями классической гипотезы Коллатца:
 
-Features of the 8n+8 Rule:
+Правило n+1:
 
-The 8n+8 rule is particularly interesting because it has a coefficient in front of n that is larger than in the classical 3n+1 rule. Nevertheless, it works even for the number 999^9999, which highlights its potential significance for further research.
+Если n нечётное: n→n+1,
 
-Proof of Algorithm Correctness:
-The program was tested on various numbers, and all rules (n+1, 2n+2, 3n+1, 4n+4, 6n+2, and 8n+8) worked successfully for the numbers 999, 999^9, 999^99, 999^999.
+Если n чётное: n→n/2.
 
-This confirms that the algorithm contains no errors and correctly processes the sequences.
+Правило 2n+2:
 
-Conclusions:
+Если n нечётное: n→2n+2,
 
-The Collatz conjecture is not valid :
+Если n чётное: n→n/2.
 
-For the number 999^9999, the classical 3n+1 rule stops working.
+Правило 4n+4:
 
-New rules perform better:
+Если n нечётное: n→4n+4,
 
-The rules n+1, 2n+2, and 8n+8 successfully work for the number 999^9999, generating sequences that lead to 1.
-It is important to understand that the new rules (n+1, 2n+2, and 8n+8) do not refute the Collatz conjecture itself but rather confirm the reliability of the algorithm for computing sequences for the number 999^9999.
+Если n чётное: n→n/2.
 
-License Description:
+Правило 6n+2:
 
-This project is distributed under the Apache License Version 2.0, which allows free use, modification, and distribution of the code, provided that copyright notices and license information are preserved.
+Если n нечётное: n→8n+8,
 
-Currently, I am working on developing a method for manual verification of extremely large numbers.
+Если n чётное: n→n/2.
 
-If you have any questions or suggestions for manually processing the number 999^9999, feel free to contact me at: misha0966.33@gmail.com .
+Правило 8n+8:
+
+Если n нечётное: n→8n+8,
+
+Если n чётное: n→n/2.
+
+Особенности новых правил:
+
+Все предложенные правила (n+1, 2n+2, 4n+4, 6n+2, 8n+8) успешно работают для числа 999^9999, создавая последовательности, которые приводят к 1.
+
+Правило 8n+8 особенно интересно, так как оно имеет коэффициент перед n, который больше, чем в классическом правиле 3n+1. Тем не менее, оно демонстрирует стабильное поведение, что указывает на его потенциальную значимость для дальнейших исследований.
+
+Результаты тестирования.
+
+Программа была протестирована на различных числах, включая 999^k для k=1,9,99,999,9999. 
+
+Результаты показывают:
+
+Классическое правило 3n+1 работает для всех протестированных чисел, включая 999^9999.
+
+Все новые правила (n+1, 2n+2, 4n+4, 6n+2, 8n+8) также успешно работают для всех протестированных чисел.
+
+Значимость исследования:
+
+Подтверждение надёжности классической гипотезы:
+
+Тестирование на числе 999^9999 подтвердило стабильность классического правила 3n+1, что усиливает доверие к гипотезе Коллатца.
+
+Расширение возможностей исследования:
+
+Предложенные новые правила предлагают альтернативные подходы к исследованию последовательностей.
+
+Они могут быть использованы для анализа чисел, которые выходят за пределы традиционных тестов, и открывают новые направления для теоретических исследований.
+
+Научный вклад:
+
+Исследование подчёркивает важность тестирования гипотез на очень больших числах.
+
+Открытие стабильности правила 8n+8 может стать отправной точкой для новых теоретических исследований.
+
+Практическое применение:
+
+Разработанный алгоритм может быть использован для обучения и демонстрации работы последовательностей Коллатца.
+
+Проект может быть полезен для исследователей, изучающих динамические системы и теорию чисел.
+
+Лицензия:
+
+Данный проект распространяется по лицензии Apache License Version 2.0 , что позволяет свободно использовать, изменять и распространять код при условии сохранения авторских прав и уведомления о лицензии.
+
+Выводы:
+
+Классическая гипотеза Коллатца подтверждена на очень большом числе 999^9999, что усиливает доверие к её справедливости.
+
+Предложенные новые правила (n+1, 2n+2, 4n+4, 6n+2, 8n+8) демонстрируют стабильность и могут быть использованы для расширения исследований.
+
+Правило 8n+8 представляет особый интерес благодаря своей уникальной структуре и стабильному поведению.
+
+Проект направлен на развитие теории последовательностей Коллатца и предлагает новые инструменты для их анализа.
