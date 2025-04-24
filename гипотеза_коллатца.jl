@@ -42,7 +42,7 @@ rules = [
 ]
 
 # Функция для сохранения результатов в файл
-function save_rule_results(name, steps, time_taken, sequence, status, directory="1collatz_sequences1")
+function save_rule_results(name, steps, time_taken, sequence, status, directory="collatz_sequences")
     # Создание директории, если её нет
     if !isdir(directory)
         mkdir(directory)
