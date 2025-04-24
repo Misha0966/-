@@ -5,22 +5,20 @@ using Base.Threads
 println("Анализ последовательностей Коллатца с различными правилами")
 
 # Функция генерации последовательности
-function generate_sequence(n::BigInt; rule=n->iseven(n) ? div(n, 2) : 3n+1, max_steps=1_000_000)
+function generate_sequence(n::BigInt; rule=n->iseven(n) ? div(n, 2) : 3n+1, max_steps=1000000)
     sequence = [n]
     steps = 0
     seen_values = Set{BigInt}()  # Множество для отслеживания уже встреченных значений
     
     while n != 1 && steps < max_steps
-        if n <= typemax(Int64)
-            n = Int64(n)  # Ускорение для малых чисел
-        end
-        
         # Проверка на цикл
         if n in seen_values
+            println("Обнаружен цикл: текущее значение n = $n")
             return sequence, steps, :loop  # Последовательность уходит в бесконечность (цикл)
         end
         push!(seen_values, n)
         
+        # Применение правила
         n = rule(n)
         push!(sequence, n)
         steps += 1
@@ -44,7 +42,7 @@ rules = [
 ]
 
 # Функция для сохранения результатов в файл
-function save_rule_results(name, steps, time_taken, sequence, status, directory="collatz_sequences")
+function save_rule_results(name, steps, time_taken, sequence, status, directory="1collatz_sequences1")
     # Создание директории, если её нет
     if !isdir(directory)
         mkdir(directory)
@@ -77,7 +75,7 @@ function save_rule_results(name, steps, time_taken, sequence, status, directory=
 end
 
 # Функция сравнения правил (с параллельной обработкой)
-function compare_rules(start_num, directory="collatz_sequences")
+function compare_rules(start_num, directory="1collatz_sequences1")
     @threads for (name, rule) in rules
         println("\nАнализ правила: $name")
         time_taken = @elapsed begin
